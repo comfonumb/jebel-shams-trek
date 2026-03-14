@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jebel Shams W4 Expedition Planner | Mar 26–27 2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{font-family:'Inter',sans-serif}
+.card{transition:all .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.1)}
+</style>
+</head>
+
+<body class="bg-slate-100 text-slate-800">
+
+<header class="bg-slate-900 text-white p-6 shadow">
+<div class="max-w-6xl mx-auto flex justify-between items-center">
+<div>
+<h1 class="text-3xl font-bold">Jebel Shams W4 Expedition Planner</h1>
+<p class="text-slate-300">Trek plan – March 26–27, 2026</p>
+</div>
+<div class="text-right text-sm text-slate-300">
+<p>Mixed fitness team</p>
+<p>10-14 hikers</p>
+</div>
+</div>
+</header>
+
+<main class="max-w-6xl mx-auto p-6 space-y-10">
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Preparation Plan (2 Weeks Before Trek)</h2>
+
+<div class="grid md:grid-cols-2 gap-6">
+
+<div>
+<h3 class="font-semibold text-lg mb-2">Week 1 – Conditioning</h3>
+<ul class="list-disc ml-6 space-y-1 text-sm">
+<li>10–12 km brisk walk or hike</li>
+<li>Hill or stair climbing session</li>
+<li>Strength training: squats, lunges, step‑ups</li>
+<li>Core training (plank / balance)</li>
+<li>Practice carrying a 5–6 kg backpack</li>
+<li>Focus on hydration and sleep</li>
+</ul>
+</div>
+
+<div>
+<h3 class="font-semibold text-lg mb-2">Week 2 – Test Hike</h3>
+<ul class="list-disc ml-6 space-y-1 text-sm">
+<li>10–14 km test hike</li>
+<li>500–700 m elevation gain</li>
+<li>Carry full backpack (6–7 kg)</li>
+<li>Start before sunrise</li>
+<li>Evaluate pace and endurance</li>
+<li>Identify fast / moderate / slow hikers</li>
+</ul>
+</div>
+
+</div>
+
+<div class="mt-6">
+<h3 class="font-semibold text-lg mb-2">Nutrition Preparation</h3>
+<ul class="list-disc ml-6 text-sm space-y-1">
+<li>Protein intake: ~1.2–1.6 g per kg body weight daily</li>
+<li>Increase carbohydrates during final week</li>
+<li>Hydrate well (2–3 L daily)</li>
+<li>Avoid alcohol and sleep deprivation before trek</li>
+</ul>
+</div>
+
+</section>
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Trek Overview</h2>
+<p class="mb-4">The W4 summit route of Jebel Shams is a long alpine desert trek involving rocky terrain, steep climbs and poorly marked sections near the summit plateau.</p>
+
+<div class="grid md:grid-cols-4 gap-4">
+<div class="bg-slate-50 p-4 rounded">
+<strong>Distance</strong>
+<p>13–22 km</p>
+</div>
+
+<div class="bg-slate-50 p-4 rounded">
+<strong>Summit Elevation</strong>
+<p>~3000 m</p>
+</div>
+
+<div class="bg-slate-50 p-4 rounded">
+<strong>Expected Duration</strong>
+<p>9–12 hours</p>
+</div>
+
+<div class="bg-slate-50 p-4 rounded">
+<strong>Start Time</strong>
+<p>04:30–05:00</p>
+</div>
+</div>
+</section>
+
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Hydration Calculator</h2>
+<p class="mb-4">Water requirement estimation based on Oman summer hiking conditions (≈0.7 L/hour).</p>
+
+<div class="flex gap-4 flex-wrap">
+<input id="hours" type="number" placeholder="Hiking hours" class="border p-2 rounded w-40">
+<button onclick="calcWater()" class="bg-slate-900 text-white px-4 py-2 rounded">Calculate Water</button>
+</div>
+
+<p id="waterResult" class="mt-4 font-semibold text-lg"></p>
+</section>
+
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Pack Weight Calculator</h2>
+<p class="mb-4">Estimate your backpack weight.</p>
+
+<div class="grid md:grid-cols-3 gap-4">
+<input id="water" type="number" placeholder="Liters of water" class="border p-2 rounded">
+<input id="food" type="number" placeholder="Food weight kg" class="border p-2 rounded">
+<input id="gear" type="number" placeholder="Gear weight kg" class="border p-2 rounded">
+</div>
+
+<button onclick="calcWeight()" class="mt-4 bg-slate-900 text-white px-4 py-2 rounded">Calculate Pack Weight</button>
+
+<p id="packResult" class="mt-4 font-semibold text-lg"></p>
+</section>
+
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Equipment Checklist</h2>
+
+<div class="grid md:grid-cols-2 gap-4">
+
+<ul class="space-y-2">
+<li><input type="checkbox"> Backpack (20–30L)</li>
+<li><input type="checkbox"> 4–5 L water</li>
+<li><input type="checkbox"> Electrolytes</li>
+<li><input type="checkbox"> Energy bars / snacks</li>
+<li><input type="checkbox"> Headlamp</li>
+<li><input type="checkbox"> Hat</li>
+<li><input type="checkbox"> Sunglasses</li>
+<li><input type="checkbox"> Sunscreen</li>
+</ul>
+
+<ul class="space-y-2">
+<li><input type="checkbox"> Trekking poles</li>
+<li><input type="checkbox"> Light jacket</li>
+<li><input type="checkbox"> First aid kit</li>
+<li><input type="checkbox"> Offline map</li>
+<li><input type="checkbox"> Power bank</li>
+<li><input type="checkbox"> Emergency blanket</li>
+<li><input type="checkbox"> Whistle</li>
+</ul>
+
+</div>
+</section>
+
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Team Organization</h2>
+
+<div class="grid md:grid-cols-3 gap-6">
+
+<div class="bg-slate-50 p-4 rounded">
+<h3 class="font-semibold text-lg">Fast Group</h3>
+<p>3 hikers</p>
+<p class="text-sm text-slate-600">Lead summit push</p>
+</div>
+
+<div class="bg-slate-50 p-4 rounded">
+<h3 class="font-semibold text-lg">Moderate Group</h3>
+<p>4 hikers</p>
+<p class="text-sm text-slate-600">Maintain steady pace</p>
+</div>
+
+<div class="bg-slate-50 p-4 rounded">
+<h3 class="font-semibold text-lg">Slow Group</h3>
+<p>3 hikers</p>
+<p class="text-sm text-slate-600">Possible turnaround earlier</p>
+</div>
+
+</div>
+</section>
+
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Summit Day Timeline</h2>
+
+<table class="w-full border">
+<tr class="bg-slate-200">
+<th class="p-2 text-left">Stage</th>
+<th class="p-2 text-left">Target Time</th>
+</tr>
+
+<tr>
+<td class="p-2">Start Hiking</td>
+<td class="p-2">05:00</td>
+</tr>
+
+<tr>
+<td class="p-2">Midpoint Check</td>
+<td class="p-2">09:00</td>
+</tr>
+
+<tr>
+<td class="p-2">Water Cache Point</td>
+<td class="p-2">10:30</td>
+</tr>
+
+<tr>
+<td class="p-2">Summit</td>
+<td class="p-2">12:30–13:30</td>
+</tr>
+
+<tr>
+<td class="p-2">Mandatory Descent</td>
+<td class="p-2">13:00</td>
+</tr>
+
+<tr>
+<td class="p-2">Return Trailhead</td>
+<td class="p-2">17:00–18:00</td>
+</tr>
+
+</table>
+</section>
+
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Turn‑Around Rules</h2>
+
+<ul class="list-disc ml-6 space-y-2">
+<li>Absolute turnaround time: 12:30 PM</li>
+<li>If summit is more than 1 hour away → descend</li>
+<li>If water remaining is less than 50% → descend</li>
+<li>No one hikes alone</li>
+<li>Group leader decision is final</li>
+</ul>
+
+</section>
+
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Emergency Warning Signs</h2>
+
+<ul class="grid md:grid-cols-3 gap-2 list-disc ml-6">
+<li>Dizziness</li>
+<li>Headache</li>
+<li>Nausea</li>
+<li>Muscle cramps</li>
+<li>Confusion</li>
+<li>Extreme fatigue</li>
+</ul>
+
+</section>
+
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Route Map (GPX)</h2>
+
+<p class="mb-4">Upload a GPX file to visualize the route.</p>
+
+<input type="file" id="gpxFile" class="border p-2 rounded">
+
+<p class="text-sm text-slate-600 mt-2">Tip: Load the GPX track from AllTrails or Gaia GPS before the hike.</p>
+
+</section>
+
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Expedition Details</h2>
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<h3 class="font-semibold text-lg">Aim</h3>
+<p class="text-sm">Enjoy the trek with amazing views, build stamina, and meet new people.</p>
+
+<h3 class="font-semibold text-lg mt-4">Difficulty</h3>
+<p class="text-sm">Hard (5/5)</p>
+
+<h3 class="font-semibold text-lg mt-4">Weather</h3>
+<p class="text-sm">Partially cloudy. ~20°C daytime and 10–12°C night.</p>
+
+<h3 class="font-semibold text-lg mt-4">Transportation</h3>
+<p class="text-sm">Sedan or 4×4 vehicles.</p>
+</div>
+
+<div>
+<h3 class="font-semibold text-lg">Essential Items to Carry</h3>
+<ul class="list-disc ml-6 text-sm space-y-1">
+<li>Minimum 3 L water (mandatory)</li>
+<li>Head torch (mandatory)</li>
+<li>Backpack</li>
+<li>Hiking shoes</li>
+<li>Snacks</li>
+<li>Walking sticks</li>
+<li>Gloves</li>
+<li>Jacket</li>
+<li>Hat</li>
+<li>Sunglasses</li>
+<li>Sunscreen lotion</li>
+<li>Power banks</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Trip Itinerary</h2>
+
+<h3 class="font-semibold text-lg mb-2">Day 1 – March 26, 2026 (Thursday)</h3>
+<ul class="list-disc ml-6 text-sm space-y-1">
+<li>4–5 PM: Start journey from Muscat</li>
+<li>Dinner at Ras Al Hamra Mandi</li>
+<li>10 PM: Check‑in at Jebel Guest House</li>
+</ul>
+
+<h3 class="font-semibold text-lg mt-4 mb-2">Day 2 – March 27, 2026</h3>
+<ul class="list-disc ml-6 text-sm space-y-1">
+<li>5:00 AM: Begin hike</li>
+<li>6:00 PM: Finish hike</li>
+<li>Return to guest house for camping</li>
+<li>Summit celebration until midnight</li>
+</ul>
+
+<h3 class="font-semibold text-lg mt-4 mb-2">Day 3 – Optional (March 28)</h3>
+<ul class="list-disc ml-6 text-sm space-y-1">
+<li>Breakfast at guest house</li>
+<li>9:00 AM: Depart Jebel Shams</li>
+<li>1:00 PM: Return to Muscat</li>
+</ul>
+</section>
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Contacts</h2>
+<p class="text-sm">For details or questions:</p>
+
+<div class="mt-3 space-y-2 text-sm">
+<p><strong>Ghalib</strong> – <a class="text-blue-600" href="https://wa.me/96895564977">WhatsApp</a></p>
+<p><strong>Vishal</strong> – <a class="text-blue-600" href="https://wa.me/96890995588">WhatsApp</a></p>
+</div>
+
+<h3 class="font-semibold text-lg mt-6">Participants Group</h3>
+<p class="text-sm">Join the WhatsApp group:</p>
+<a class="text-blue-600 text-sm" href="https://chat.whatsapp.com/Ba144ms5cjkCrFysQg9H6U?mode=gi_t">Open group link</a>
+</section>
+
+</main>
+
+
+<footer class="bg-slate-900 text-slate-300 text-center p-6 mt-10">
+<p class="font-semibold">Jebel Shams W4 Expedition Planner</p>
+<p class="text-sm">Prepared for March 2026 Trek</p>
+</footer>
+
+
+<script>
+
+function calcWater(){
+let hours=document.getElementById('hours').value;
+let rate=0.7;
+let total=(hours*rate).toFixed(1);
+document.getElementById('waterResult').innerText="Recommended water: "+total+" L per person";
+}
+
+function calcWeight(){
+let water=document.getElementById('water').value||0;
+let food=document.getElementById('food').value||0;
+let gear=document.getElementById('gear').value||0;
+
+let total=parseFloat(water)+parseFloat(food)+parseFloat(gear);
+
+let msg="Estimated pack weight: "+total.toFixed(1)+" kg";
+
+if(total>9){
+msg+=" (Too heavy – reduce load)";
+}
+
+if(total<=9 && total>=6){
+msg+=" (Ideal range)";
+}
+
+if(total<6){
+msg+=" (You may be underprepared)";
+}
+
+
+document.getElementById('packResult').innerText=msg;
+}
+
+</script>
+
+</body>
+</html>
