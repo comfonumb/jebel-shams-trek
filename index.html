@@ -3,8 +3,60 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jebel Shams W4 Expedition by Adventures 🥾🧗‍♀️⚽️🏐🏊‍♀️ | Mar 26–27 2026</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<title>Jebel Shams W4 Expedition By Adventures | Mar 26–27 2026</title>
+<script src="https://cdn.tailwindcss.com">
+
+// Initialize Leaflet map
+const mapElement=document.getElementById('map');
+if(mapElement){
+const map=L.map('map').setView([23.2417,57.2028],11);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+maxZoom:18,
+attribution:'© OpenStreetMap'
+}).addTo(map);
+
+const start=L.marker([23.2417,57.2028]).addTo(map)
+.bindPopup('Jebel Shams Trail Area');
+
+const summit=L.marker([23.2365,57.2010]).addTo(map)
+.bindPopup('Approximate Summit Area');
+
+const route=L.polyline([
+[23.2417,57.2028],
+[23.2405,57.2020],
+[23.2390,57.2018],
+[23.2375,57.2015],
+[23.2365,57.2010]
+],{color:'red',weight:4}).addTo(map);
+
+map.fitBounds(route.getBounds());
+}
+
+const ctx=document.getElementById('elevationChart');
+if(ctx){
+new Chart(ctx,{ 
+ type:'line',
+ data:{
+ labels:['Start','2 km','4 km','6 km','8 km','Summit'],
+ datasets:[{
+ label:'Elevation (m)',
+ data:[2000,2150,2350,2550,2750,3000],
+ borderWidth:3,
+ tension:0.3
+ }]
+ },
+ options:{
+ plugins:{legend:{display:false}},
+ scales:{
+ y:{title:{display:true,text:'Elevation (meters)'}},
+ x:{title:{display:true,text:'Distance along route'}}
+ }
+ }
+});
+}
+
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -13,6 +65,9 @@ body{font-family:'Inter',sans-serif}
 .card{transition:all .2s}
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.1)}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 
 <body class="bg-slate-100 text-slate-800">
