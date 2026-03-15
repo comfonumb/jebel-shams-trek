@@ -3,17 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jebel Shams W4 Expedition By Adventures | Mar 26–27 2026</title>
+<title>Jebel Shams W4 Expedition Planner | Mar 26–27 2026</title>
 <script src="https://cdn.tailwindcss.com">
 
-// Initialize Leaflet map
+// Initialize Leaflet map after page loads
+window.addEventListener('DOMContentLoaded', function(){
 const mapElement=document.getElementById('map');
+
 if(mapElement){
+
 const map=L.map('map').setView([23.2417,57.2028],11);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 maxZoom:18,
-attribution:'© OpenStreetMap'
+attribution:'© OpenStreetMap contributors'
 }).addTo(map);
 
 const start=L.marker([23.2417,57.2028]).addTo(map)
@@ -31,7 +34,9 @@ const route=L.polyline([
 ],{color:'red',weight:4}).addTo(map);
 
 map.fitBounds(route.getBounds());
+
 }
+});
 
 const ctx=document.getElementById('elevationChart');
 if(ctx){
