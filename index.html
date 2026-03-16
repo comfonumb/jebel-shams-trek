@@ -63,31 +63,39 @@ new Chart(ctx,{
 
 
 
-// Countdown Timer
-window.addEventListener('DOMContentLoaded',function(){
-const trekDate = new Date('March 27, 2026 05:00:00').getTime();
-const countdownElement = document.getElementById('countdown');
+// Expedition Countdown Timer
+window.addEventListener('DOMContentLoaded', function(){
+
+const trekDate = new Date('2026-03-27T05:00:00').getTime();
+
+const daysEl = document.getElementById('cd-days');
+const hoursEl = document.getElementById('cd-hours');
+const minsEl = document.getElementById('cd-mins');
 
 function updateCountdown(){
-  if(!countdownElement) return;
 
-  const now = new Date().getTime();
-  const distance = trekDate - now;
+const now = new Date().getTime();
+const distance = trekDate - now;
 
-  if(distance < 0){
-    countdownElement.innerText = 'The trek has started!';
-    return;
-  }
+if(distance <= 0){
+if(daysEl) daysEl.innerText='0';
+if(hoursEl) hoursEl.innerText='0';
+if(minsEl) minsEl.innerText='0';
+return;
+}
 
-  const days = Math.floor(distance / (1000*60*60*24));
-  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+const days = Math.floor(distance / (1000*60*60*24));
+const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+const mins = Math.floor((distance % (1000*60*60)) / (1000*60));
 
-  countdownElement.innerText = `Trek begins in ${days} days ${hours} hours ${minutes} minutes`;
+if(daysEl) daysEl.innerText = days;
+if(hoursEl) hoursEl.innerText = hours;
+if(minsEl) minsEl.innerText = mins;
 }
 
 updateCountdown();
 setInterval(updateCountdown,60000);
+
 });
 
 </script>
@@ -108,7 +116,20 @@ body{font-family:'Inter',sans-serif}
 
 <header class="bg-slate-900 text-white p-6 shadow">
 <div class="max-w-6xl mx-auto text-center mb-4">
-<div id="countdown" class="text-lg font-semibold"></div>
+<div id="countdown" class="flex justify-center gap-6 text-center">
+<div class="bg-slate-800 px-6 py-3 rounded-lg">
+<div id="cd-days" class="text-3xl font-bold">--</div>
+<div class="text-xs text-slate-300">DAYS</div>
+</div>
+<div class="bg-slate-800 px-6 py-3 rounded-lg">
+<div id="cd-hours" class="text-3xl font-bold">--</div>
+<div class="text-xs text-slate-300">HOURS</div>
+</div>
+<div class="bg-slate-800 px-6 py-3 rounded-lg">
+<div id="cd-mins" class="text-3xl font-bold">--</div>
+<div class="text-xs text-slate-300">MIN</div>
+</div>
+</div>
 </div>
 <div class="max-w-6xl mx-auto flex justify-between items-center">
 <div>
