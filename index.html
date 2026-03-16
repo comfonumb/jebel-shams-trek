@@ -77,24 +77,27 @@ function updateCountdown(){
 const now = new Date().getTime();
 const distance = trekDate - now;
 
+if(!daysEl || !hoursEl || !minsEl) return;
+
 if(distance <= 0){
-if(daysEl) daysEl.innerText='0';
-if(hoursEl) hoursEl.innerText='0';
-if(minsEl) minsEl.innerText='0';
-return;
+  daysEl.textContent = '0';
+  hoursEl.textContent = '0';
+  minsEl.textContent = '0';
+  return;
 }
 
 const days = Math.floor(distance / (1000*60*60*24));
 const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-const mins = Math.floor((distance % (1000*60*60)) / (1000*60));
+const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
 
-if(daysEl) daysEl.innerText = days;
-if(hoursEl) hoursEl.innerText = hours;
-if(minsEl) minsEl.innerText = mins;
+// force string update
+ daysEl.textContent = String(days);
+ hoursEl.textContent = String(hours);
+ minsEl.textContent = String(minutes);
 }
 
 updateCountdown();
-setInterval(updateCountdown,60000);
+setInterval(updateCountdown,1000);
 
 });
 
