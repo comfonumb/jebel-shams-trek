@@ -3,126 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jebel Shams W4 Expedition Planner | Mar 26–27 2026</title>
-<script src="https://cdn.tailwindcss.com">
+<title>Jebel Shams W4 Expedition Planner</title>
 
-// Initialize Leaflet map after page loads
-window.addEventListener('DOMContentLoaded', function(){
-const mapElement=document.getElementById('map');
+<script src="https://cdn.tailwindcss.com"></script>
 
-if(mapElement){
-
-const map=L.map('map').setView([23.2417,57.2028],11);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-maxZoom:18,
-attribution:'© OpenStreetMap contributors'
-}).addTo(map);
-
-const start=L.marker([23.2417,57.2028]).addTo(map)
-.bindPopup('Jebel Shams Trail Area');
-
-const summit=L.marker([23.2365,57.2010]).addTo(map)
-.bindPopup('Approximate Summit Area');
-
-const route=L.polyline([
-[23.2417,57.2028],
-[23.2405,57.2020],
-[23.2390,57.2018],
-[23.2375,57.2015],
-[23.2365,57.2010]
-],{color:'red',weight:4}).addTo(map);
-
-map.fitBounds(route.getBounds());
-
-}
-});
-
-const ctx=document.getElementById('elevationChart');
-if(ctx){
-new Chart(ctx,{ 
- type:'line',
- data:{
- labels:['Start','2 km','4 km','6 km','8 km','Summit'],
- datasets:[{
- label:'Elevation (m)',
- data:[2000,2150,2350,2550,2750,3000],
- borderWidth:3,
- tension:0.3
- }]
- },
- options:{
- plugins:{legend:{display:false}},
- scales:{
- y:{title:{display:true,text:'Elevation (meters)'}},
- x:{title:{display:true,text:'Distance along route'}}
- }
- }
-});
-}
-
-
-
-<script>
-
-// ✅ Reliable countdown (timezone-safe)
-
-window.addEventListener('DOMContentLoaded', function(){
-
-// Set Oman time explicitly (UTC+4)
-const trekDate = new Date(Date.UTC(2026, 2, 27, 1, 0, 0)); 
-// 05:00 Oman = 01:00 UTC
-
-const daysEl = document.getElementById('cd-days');
-const hoursEl = document.getElementById('cd-hours');
-const minsEl = document.getElementById('cd-mins');
-
-function updateCountdown(){
-
-const now = new Date().getTime();
-const distance = trekDate.getTime() - now;
-
-if(!daysEl || !hoursEl || !minsEl) return;
-
-if(distance <= 0){
-  daysEl.textContent = '0';
-  hoursEl.textContent = '0';
-  minsEl.textContent = '0';
-  return;
-}
-
-const days = Math.floor(distance / (1000*60*60*24));
-const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-
-daysEl.textContent = days;
-hoursEl.textContent = hours;
-minsEl.textContent = minutes;
-
-}
-<div id="cd-days"></div>
-<div id="cd-hours"></div>
-<div id="cd-mins"></div>
-// run immediately
-updateCountdown();
-
-// update every second (not minute)
-setInterval(updateCountdown,1000);
-
-});
-
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
 <style>
 body{font-family:'Inter',sans-serif}
 .card{transition:all .2s}
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.1)}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
 </head>
 
 <body class="bg-slate-100 text-slate-800">
