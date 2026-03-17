@@ -3,21 +3,116 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jebel Shams W4 Expedition Planner</title>
+<title>Jebel Shams W4 Expedition Planner | Mar 26–27 2026</title>
+<script src="https://cdn.tailwindcss.com">
 
-<script src="https://cdn.tailwindcss.com"></script>
+// Initialize Leaflet map after page loads
+window.addEventListener('DOMContentLoaded', function(){
+const mapElement=document.getElementById('map');
 
+if(mapElement){
+
+const map=L.map('map').setView([23.2417,57.2028],11);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+maxZoom:18,
+attribution:'© OpenStreetMap contributors'
+}).addTo(map);
+
+const start=L.marker([23.2417,57.2028]).addTo(map)
+.bindPopup('Jebel Shams Trail Area');
+
+const summit=L.marker([23.2365,57.2010]).addTo(map)
+.bindPopup('Approximate Summit Area');
+
+const route=L.polyline([
+[23.2417,57.2028],
+[23.2405,57.2020],
+[23.2390,57.2018],
+[23.2375,57.2015],
+[23.2365,57.2010]
+],{color:'red',weight:4}).addTo(map);
+
+map.fitBounds(route.getBounds());
+
+}
+});
+
+const ctx=document.getElementById('elevationChart');
+if(ctx){
+new Chart(ctx,{ 
+ type:'line',
+ data:{
+ labels:['Start','2 km','4 km','6 km','8 km','Summit'],
+ datasets:[{
+ label:'Elevation (m)',
+ data:[2000,2150,2350,2550,2750,3000],
+ borderWidth:3,
+ tension:0.3
+ }]
+ },
+ options:{
+ plugins:{legend:{display:false}},
+ scales:{
+ y:{title:{display:true,text:'Elevation (meters)'}},
+ x:{title:{display:true,text:'Distance along route'}}
+ }
+ }
+});
+}
+
+
+
+// Expedition Countdown Timer
+window.addEventListener('DOMContentLoaded', function(){
+
+const trekDate = new Date('2026-03-27T05:00:00').getTime();
+
+const daysEl = document.getElementById('cd-days');
+const hoursEl = document.getElementById('cd-hours');
+const minsEl = document.getElementById('cd-mins');
+
+function updateCountdown(){
+
+const now = new Date().getTime();
+const distance = trekDate - now;
+
+if(!daysEl || !hoursEl || !minsEl) return;
+
+if(distance <= 0){
+  daysEl.textContent = '0';
+  hoursEl.textContent = '0';
+  minsEl.textContent = '0';
+  return;
+}
+
+const days = Math.floor(distance / (1000*60*60*24));
+const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+
+// force string update
+ daysEl.textContent = String(days);
+ hoursEl.textContent = String(hours);
+ minsEl.textContent = String(minutes);
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+});
+
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
 <style>
 body{font-family:'Inter',sans-serif}
 .card{transition:all .2s}
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.1)}
 </style>
-</head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 
 <body class="bg-slate-100 text-slate-800">
@@ -50,6 +145,26 @@ body{font-family:'Inter',sans-serif}
 </div>
 </div>
 </header>
+
+<section class="relative h-[320px] md:h-[420px]">
+<img src="summit.jpg" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+<div class="text-center text-white">
+<h1 class="text-3xl md:text-5xl font-bold">Jebel Shams Summit Trek</h1>
+<p class="mt-2 text-lg">March 27, 2026 • W4 Route</p>
+</div>
+</div>
+</section>
+
+<section class="relative h-[320px] md:h-[420px]">
+<img src="summit.jpg" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+<div class="text-center text-white">
+<h1 class="text-3xl md:text-5xl font-bold">Jebel Shams Summit Trek</h1>
+<p class="mt-2 text-lg">March 27, 2026 • W4 Route</p>
+</div>
+</div>
+</section>
 
 <main class="max-w-6xl mx-auto p-6 space-y-10">
 
@@ -92,6 +207,17 @@ body{font-family:'Inter',sans-serif}
 <li>Hydrate well (2–3 L daily)</li>
 <li>Avoid alcohol and sleep deprivation before trek</li>
 </ul>
+</div>
+
+</section>
+
+<section class="bg-white rounded-xl shadow p-6 card">
+<h2 class="text-2xl font-semibold mb-4">Route Highlights</h2>
+
+<div class="grid md:grid-cols-3 gap-4">
+<img src="trail.jpg" class="rounded-xl shadow">
+<img src="canyon.jpg" class="rounded-xl shadow">
+<img src="summit.jpg" class="rounded-xl shadow">
 </div>
 
 </section>
@@ -236,7 +362,7 @@ body{font-family:'Inter',sans-serif}
 
 <tr>
 <td class="p-2">Summit</td>
-<td class="p-2">12:00–13:00</td>
+<td class="p-2">12:30–13:30</td>
 </tr>
 
 <tr>
@@ -422,103 +548,6 @@ document.getElementById('packResult').innerText=msg;
 }
 
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", function(){
 
-// TEST TIMER
-const test = document.getElementById("cd-days");
-if(test){
-  test.innerText = "OK";
-}
-
-// TEST MAP
-if(document.getElementById("map")){
-  const map = L.map('map').setView([23.2417,57.2028],11);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    maxZoom:18
-  }).addTo(map);
-}
-
-// TEST CHART
-if(document.getElementById("elevationChart")){
-  new Chart(document.getElementById('elevationChart'),{
-    type:'line',
-    data:{
-      labels:['A','B','C'],
-      datasets:[{data:[1,2,3]}]
-    }
-  });
-}
-
-});
-</script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-
-// ✅ COUNTDOWN
-const trekDate = new Date(Date.UTC(2026, 2, 27, 1, 0, 0));
-
-function updateCountdown(){
-const now = new Date().getTime();
-const distance = trekDate.getTime() - now;
-
-if(distance <= 0) return;
-
-document.getElementById("cd-days").textContent =
-Math.floor(distance / (1000*60*60*24));
-
-document.getElementById("cd-hours").textContent =
-Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-
-document.getElementById("cd-mins").textContent =
-Math.floor((distance % (1000*60*60)) / (1000*60));
-}
-
-updateCountdown();
-setInterval(updateCountdown,1000);
-
-
-// ✅ MAP
-if(document.getElementById("map")){
-const map = L.map('map').setView([23.2417,57.2028],11);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-maxZoom:18
-}).addTo(map);
-
-L.marker([23.2417,57.2028]).addTo(map).bindPopup("Start");
-L.marker([23.2365,57.2010]).addTo(map).bindPopup("Summit");
-
-L.polyline([
-[23.2417,57.2028],
-[23.2405,57.2020],
-[23.2390,57.2018],
-[23.2375,57.2015],
-[23.2365,57.2010]
-],{color:'red'}).addTo(map);
-}
-
-
-// ✅ CHART
-if(document.getElementById("elevationChart")){
-new Chart(document.getElementById('elevationChart'),{
-type:'line',
-data:{
-labels:['Start','2 km','4 km','6 km','8 km','Summit'],
-datasets:[{
-data:[2000,2150,2350,2550,2750,3000],
-borderWidth:3,
-tension:0.3
-}]
-}
-});
-}
-
-});
-</script>
 </body>
 </html>
